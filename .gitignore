@@ -9,6 +9,7 @@ build/
 .idea/jarRepositories.xml
 .idea/compiler.xml
 .idea/libraries/
+.idea
 *.iws
 *.iml
 *.ipr
@@ -41,23 +42,6 @@ bin/
 ### Mac OS ###
 .DS_Store
 
-.DS_Store
-.gradle
 /build/
 !gradle/wrapper/gradle-wrapper.jar
 /target/
-
-### STS ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-bin/
-
-### IntelliJ IDEA ###
-.idea
-*.iws
-*.iml
-*.ipr
