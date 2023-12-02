@@ -1,4 +1,4 @@
-package org.example.hash;
+package org.example.programmers.hash;
 
 import java.util.*;
 
