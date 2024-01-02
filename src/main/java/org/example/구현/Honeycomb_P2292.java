@@ -1,11 +1,11 @@
-package org.example;
+package org.example.구현;
 
 import java.util.Scanner;
 /*
     외곽의 벌집이 늘어나는 개수 규칙을 구한다(등차수열)
     1, 6, 12... 이렇게 줄마다 개수를 구하면 a2부터 6씩 늘어난다.
  */
-public class Honeycomb {
+public class Honeycomb_P2292 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();

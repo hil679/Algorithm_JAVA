@@ -1,4 +1,4 @@
-package org.example;
+package org.example.구현;
 
 import java.util.Scanner;
 /*

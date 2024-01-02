@@ -1,4 +1,4 @@
-package org.example;
+package org.example.binary_search;
 
 import java.io.BufferedReader;
 import java.io.IOException;
