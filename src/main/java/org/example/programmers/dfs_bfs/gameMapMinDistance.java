@@ -23,7 +23,7 @@ class gameMapMinDistance {
         return answer;
     }
 
-    public void bfs(int[][] maps, int[][] visited){
+    public void bfs(int[][] maps, int[][] visited){ // maps와 visited크기 맞추기(2)
         int x = 0;
         int y = 0;
         visited[x][y] = 1;
