@@ -1,39 +1,38 @@
 package org.example.구현;
 
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.Scanner;
 
 public class P21921 {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
         int x = sc.nextInt();
         sc.nextLine();
         int[] people = Arrays.stream(sc.nextLine().split(" ")).mapToInt(i -> Integer.valueOf(i)).toArray();
 
-        int maxVisitNum = 0;
         int temp = 0;
-        int answer = 0;
+        for(int j = 0; j < x; j++) {
+            temp += people[j];
+        }
+        int maxVisitNum = temp;
+        int answer = 1;
 
-        for(int i = 0; i + x <= people.length; i++) {
-            for(int j = i; j < i + x; j++) {
-                temp += people[j];
-            }
-            if(maxVisitNum > temp) {
-                temp = 0;
-                continue;
-            } else if (maxVisitNum == temp) {
-                answer++;
-            } else {
+        int prev = 0;
+        for(int i = x; i < people.length; i++) {
+            temp -= people[prev];
+            temp += people[i];
+            prev++;
+            if(maxVisitNum < temp) {
                 maxVisitNum = temp;
                 answer = 1;
+            } else if (maxVisitNum == temp) {
+                answer++;
             }
-            temp = 0;
         }
 
 
-        if(answer == 0){
+        if(maxVisitNum == 0){ // answer == 0이면 maxVisitNum = temp = 0일 때 answer가 +되면서 문제가 됨
             System.out.println("SAD");
         } else {
             System.out.println(maxVisitNum);
