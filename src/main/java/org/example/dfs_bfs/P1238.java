@@ -26,8 +26,8 @@ public class P1238 {
         for (int i = 1; i <= N; i++) {
             if (i == X)
                 continue;
-            bfs(i, X);
-            bfs(X, i);
+            dfs(i, X);
+            dfs(X, i);
             if (maxTime < curStudentTime)
                 maxTime = curStudentTime;
             curStudentTime = 0;
@@ -35,7 +35,7 @@ public class P1238 {
         System.out.println(maxTime);
     }
 
-    public static void bfs(Integer curVillage, Integer target) {
+    public static void dfs(Integer curVillage, Integer target) {
         if(roadInfo[target][curVillage] != null) {
             curStudentTime += roadInfo[target][curVillage];
             return;
@@ -52,6 +52,6 @@ public class P1238 {
                 minidx = i;
             }
         }
-        bfs(curVillage, minidx);
+        dfs(curVillage, minidx);
     }
 }
