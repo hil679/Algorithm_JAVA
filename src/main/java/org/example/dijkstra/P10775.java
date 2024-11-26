@@ -4,33 +4,40 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-import static java.lang.Long.toBinaryString;
-
 public class P10775 {
+    static int[] visit;
 
     public static void main(String[] args) throws IOException {
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         int g = Integer.valueOf(bf.readLine());
         int p = Integer.valueOf(bf.readLine());
         int ans = 0;
-        int visit = ((1 << g+1) - 1);
-        visit = visit & ~(1 << (0)); //0번째를 0으로
-//        System.out.println(toBinaryString(visit));
+        visit = new int[g + 1];
+        for (int i = 1; i < g + 1; i++) {
+            visit[i] = i;
+        }
 
-        for (int i = 1; i <=p; i++) {
+        for (int i = 1; i <= p; i++) {
             int airplane = Integer.valueOf(bf.readLine());
-            while(airplane > 0) {
-                if ((visit & (1 << (airplane))) == (1 << (airplane))) {
-                    visit = visit & ~(1 << (airplane));
-//                System.out.println(toBinaryString(visit));
-                    ans++;
-                    break;
-                }
-                airplane--;
-            }
-            if (visit == 0)
-                break;
+
+            if (find(airplane) == 0) break;
+                ans++;
+            union(find(airplane), find(airplane) - 1);
         }
         System.out.println(ans);
+    }
+
+    private static int find(int airplane) {
+        if (visit[airplane] == airplane)
+            return airplane;
+        else
+            return visit[airplane] = find(visit[airplane]);
+    }
+
+    private static void union(int airplane, int leftDocking) {
+        airplane = find(airplane);
+        leftDocking = find(leftDocking);
+
+        visit[airplane] = leftDocking;
     }
 }
