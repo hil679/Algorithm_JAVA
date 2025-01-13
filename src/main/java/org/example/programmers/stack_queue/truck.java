@@ -4,6 +4,9 @@ import java.util.*;
 
 public class truck {
     public int solution(int bridge_length, int weight, int[] truck_weights) {
+
+        PriorityQueue<Integer> pqueue = new PriorityQueue<>();
+        
         int time = 0;
         int cur_weight = 0;
         Queue<Integer> bridgeQueue = new LinkedList<>();
