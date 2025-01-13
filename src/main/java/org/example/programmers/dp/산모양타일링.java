@@ -2,14 +2,23 @@ package org.example.programmers.dp;
 import java.util.*;
 public class 산모양타일링 {
     public int solution(int n, int[] tops) {
-        int[] a = new int[n + 1];
-        int[] b = new int[n + 1];
+        /*
+        !!! 아래 방향 삼각형 기준으로 dp 나눠 줘야함
+        삼각형은 아래 방향 삼각형 기준으로 4가지 케이스가 존재:
+            1. 아래 방향 삼각형
+            2. 왼쪽 위 방향 삼각형
+            3. 위쪽 위 방향 삼각형(tops 정보)
+            4. 오른쪽 위 방향 삼각형
+         */
+        int[] a = new int[n + 1]; // 오른쪽 윗방향 삼각형 덮는 경우의 수
+        int[] b = new int[n + 1]; // 오른쪽 윗방향 제외 경우의 수
         int mod = 10007;
 
-        a[0] = 0;
-        b[0] = 1;
+        a[0] = 0; // 오른쪽 윗방향 없음
+        b[0] = 1; // 왼쪽 윗방향 1개
         for (int i = 1; i <= n; ++i) {
             a[i] = (a[i - 1] + b[i - 1]) % mod;
+            //노트참고
             if (tops[i - 1] > 0)
                 b[i] = (2 * a[i - 1] + 3 * b[i - 1]) % mod;
             else
