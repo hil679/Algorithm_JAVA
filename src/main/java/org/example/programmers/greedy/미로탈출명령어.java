@@ -4,6 +4,64 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class 미로탈출명령어 {
+    public String greedySolution(int n, int m, int x, int y, int r, int c, int k) {
+        String answer = "impossible";
+        int diff = get_dist(x, y, r, c);
+        int move = k;
+        int new_diff=0;
+        StringBuilder sb = new StringBuilder();
+        boolean possible = false;
+
+        if (move-diff<0 || (move-diff)%2==1) return "impossible";
+
+        while (move > 0) {
+            if ((move-diff)==0) {
+                if (x < r) {
+                    sb.append("d");
+                    x += 1;
+                }
+                else if (y > c) {
+                    sb.append("l");
+                    y-=1;
+                }
+                else if (y < c) {
+                    sb.append("r");
+                    y+=1;
+                }
+                else if (x > r) {
+                    sb.append("u");
+                    x -= 1;
+                }
+                diff--;
+                move--;
+            } else {
+                if (x+1<=n ) {
+                    sb.append("d");
+                    ++x;
+                }
+                else if (y-1>=1) {
+                    sb.append("l");
+                    --y;
+                }
+                else if (y+1<=m) {
+                    sb.append("r");
+                    ++y;
+                }
+                else if (x-1>=1) {
+                    sb.append("u");
+                    --x;
+                }
+                diff = get_dist(x, y, r, c);
+                move--;
+            }
+        }
+
+        if (x==r && y==c)
+            return sb.toString();
+        else
+            return "impossible";
+    }
+
     public String failSolutionBFS(int n, int m, int x, int y, int r, int c, int k) {
         String answer = "impossible";
         int[] dy = {0, -1, 1, 0}; // 가로 - m, y, c
