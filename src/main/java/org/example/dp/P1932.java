@@ -1,4 +1,4 @@
-package org.example.swm.dp;
+package org.example.dp;
 
 import java.io.BufferedReader;
 import java.io.IOException;
