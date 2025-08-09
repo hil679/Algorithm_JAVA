@@ -10,14 +10,14 @@ public class P1707 {
 
     /*
     1
-    5 4
-    1 2
-    3 4
-    2 3
-    4 1
-    간선 순서에 따라, 코드는 홀수 길이의 사이클을 발견하지 못하고 "YES"를 출력합니다.
+    4 3
+    1 4 (1 , -1)
+    2 3 (1, -1)
+    3 4 (-1, -1)
+    YES인데 NO라고 출력
+    간선 순서에 따라, 사이클을 발견하지 못함.
      */
-    public static void fail(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.valueOf(br.readLine());
         while (n > 0) {
@@ -43,7 +43,7 @@ public class P1707 {
                     flag = false;
                     break;
                 }
-                System.out.println(node[color1] + " " + node[color2]);
+//                System.out.println(node[color1] + " " + node[color2]);
 
             }
             if (flag)
