@@ -5,7 +5,50 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class P20437 {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int t = Integer.parseInt(br.readLine());
+        for (int i = 0; i < t; i++) {
+            String s = br.readLine();
+            int k = Integer.parseInt(br.readLine());
+            int alpha[] = new int[26];
+            if (k == 1) {
+                System.out.println("1 1");
+                continue;
+            }
+
+            for (int j =0; j <s.length(); j++) {
+                alpha[s.charAt(j)-'a']++;
+            }
+
+            int min = 10001, max = 0;
+            for(int j = 0; j < s.length(); j++) {
+                if (alpha[s.charAt(j)-'a'] < k) continue;
+                int count = 1, kCnt = 1;
+                for (int x = j+1; x < s.length(); x++) {
+                    count++;
+                    if (s.charAt(j) == s.charAt(x))
+                    {
+                        kCnt++;
+                    }
+                    if(kCnt == k) {
+                        min = Math.min(count, min);
+                        max = Math.max(count, max);
+                        break;
+                    }
+                }
+            }
+            if (max == 0) {
+                System.out.println(-1);
+            } else {
+                System.out.println(min+" "+max);
+            }
+
+        }
+    }
+
+
+    public static void prev1(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int t = Integer.parseInt(br.readLine());
         for (int i = 0; i < t; i++) {
