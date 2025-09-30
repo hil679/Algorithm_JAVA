@@ -1,4 +1,4 @@
-package org.example.graph;
+package org.example.graph.dijkstra;
 
 import java.io.BufferedReader;
 import java.io.IOException;
